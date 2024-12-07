@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="SA24168406" />
+
+<meta name="date" content="2024-12-07" />
+
+<title>Introduction to SA24168406-package</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+
+<style type="text/css">
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Introduction to SA24168406-package</h1>
+<h4 class="author">SA24168406</h4>
+<h4 class="date">2024-12-07</h4>
+
+
+
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>This R package has 2 R functions named My_kmeans_plusplus and My_aco
+and 2 Rcpp functions named My_stratified_samplingC and Gibbs_chain_C.
+What’s more, this package includes all my homework answers in
+Homework.Rmd file. The following is a detailed description of the use of
+the four functions with examples.</p>
+<div id="my_kmeans_plusplus-function" class="section level3">
+<h3>My_kmeans_plusplus function</h3>
+<p>This function calculates the centers of K-mean++ cluster and show the
+clustering results by a figure using R. It has 3 input parameters
+including data(the data for clustering), k(the number of the centers),
+max_iter(the maximum number of iterations for clustering, the default
+value is 100), and returns a list of the centers and clusters. The
+following is an example:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(SA24168406)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">100</span> <span class="sc">*</span> <span class="dv">2</span>), <span class="at">nrow =</span> <span class="dv">100</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">My_kmeans_plusplus</span>(data, k)</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">print</span>(result<span class="sc">$</span>centers)</span></code></pre></div>
+<pre><code>##        [,1]   [,2]
+## [1,] -0.826 -0.532
+## [2,]  1.057 -0.402
+## [3,] -0.121  1.155</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">print</span>(result<span class="sc">$</span>clusters)</span></code></pre></div>
+<pre><code>##   [1] 1 3 2 1 1 2 2 1 1 3 2 3 2 1 3 2 2 1 2 1 1 1 1 1 3 1 2 3 1 2 3 3 2 2 2 3 2
+##  [38] 3 3 1 3 1 1 2 2 1 1 3 3 1 3 3 3 2 1 2 1 2 3 2 3 1 1 3 1 3 3 1 2 2 1 1 2 3
+##  [75] 1 2 1 1 3 1 1 3 1 2 1 2 3 2 3 2 2 2 3 1 2 3 2 2 1 1</code></pre>
+</div>
+<div id="my_aco-function" class="section level3">
+<h3>My_aco function</h3>
+<p>This function calculates the best path with ACO algorithm and show
+the iterative process by a figure using R. It has 7 input parameters
+including cities(the coordinates of the cities), AntsNum(the number of
+the ants), max_iter(the maximum number of iterations for optimizing, the
+default value is 100), alpha(the pheromone factor), beta(the heuristic
+factor), rho(the pheromone volatile factor), Q(the pheromone increment),
+and returns a list of the optimal path in each iteration and its length
+and the best path with its length. The following is an example:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">library</span>(SA24168406)</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>beta <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>rho <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>Q <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>AntsNum <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a>max_iter <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a>cities <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">runif</span>(n, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">100</span>),</span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a>                     <span class="at">y =</span> <span class="fu">runif</span>(n, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">100</span>))</span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">My_aco</span>(cities, AntsNum, max_iter, alpha, beta, rho, Q)</span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a><span class="fu">print</span>(result<span class="sc">$</span>min_bestPath)</span></code></pre></div>
+<pre><code>##  [1]  6  1 17  3  7 13 14 12 11  4  2  8  5 16 20  9 10 19 18 15</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">print</span>(result<span class="sc">$</span>min_bestLength)</span></code></pre></div>
+<pre><code>## [1] 417</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>  result<span class="sc">$</span>bestLength,</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;l&quot;</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;蚁群算法用例&quot;</span>,</span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;迭代次数&quot;</span>,</span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">&quot;最佳路径长度&quot;</span></span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+</div>
+<div id="my_stratified_samplingc-rcppfunction" class="section level3">
+<h3>My_stratified_samplingC Rcppfunction</h3>
+<p>This function implements stratified sampling with 2 input parameters
+including data(the data that contains the id, category, and value
+columns), samplesPerCategory(the number of samples for each category)
+and returns a list of the sampling results including id and category.
+The following is an example:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">library</span>(Rcpp)</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">category =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>), <span class="at">each =</span> <span class="dv">3</span>), <span class="at">value =</span> <span class="fu">rnorm</span>(<span class="dv">9</span>))</span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>samples_per_category <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">A =</span> <span class="dv">1</span>, <span class="at">B =</span> <span class="dv">2</span>, <span class="at">C =</span> <span class="dv">1</span>)  <span class="co"># 每个类别的样本数量</span></span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>sampled_data <span class="ot">&lt;-</span> <span class="fu">My_stratified_samplingC</span>(data, samples_per_category)</span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>sampled_data</span></code></pre></div>
+<pre><code>## [[1]]
+##   id category
+## 1  3        A
+## 2  6        B
+## 3  4        B
+## 4  7        C</code></pre>
+</div>
+<div id="gibbs_chain_c-rcppfunction" class="section level3">
+<h3>Gibbs_chain_C Rcppfunction</h3>
+<p>This function implements Gibbs sampling with 7 input parameters
+including a,b,n(parameters of the objective density function), N(the
+number of samples generated), burn(the number of samples discarded),
+x0(the initial x-value), y0(the initial y-value) and returns Gibbs
+samples. The following is an example:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fl">1e4</span></span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>burn <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">16</span></span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span>n,<span class="dv">1</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a>y0 <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>)</span>
+<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a>xC <span class="ot">&lt;-</span> <span class="fu">Gibbs_chain_C</span>(a, b, n, N, burn, x0, y0)</span></code></pre></div>
+</div>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

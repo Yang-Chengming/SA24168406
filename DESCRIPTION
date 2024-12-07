@@ -1,0 +1,16 @@
+Package: SA24168406
+Type: Package
+Title: Final project
+Version: 0.1.0
+Author: Yang Chengming
+Maintainer: Yang Chengming <15052271101@163.com>
+Description: Several R and Rcpp function are included in this package for Final project.
+License: GPL (>= 2)
+Imports: Rcpp, graphics, stats, microbenchmark
+Suggests: knitr, rmarkdown
+VignetteBuilder: knitr
+LinkingTo: Rcpp
+RoxygenNote: 7.3.2
+Encoding: UTF-8
+URL: http://github.com/Yang-Chengming/SA24168406
+BugReports: http://github.com/Yang-Chengming/SA24168406/issues
